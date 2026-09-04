@@ -12,7 +12,7 @@
 
 <body
   style="display: flex; flex-direction: column; justify-content: center; width:95vw; height: 95vh; align-items: center;">
-  <h1>リダイレクト中...</h1>
+  <h1 id="heading">リダイレクト中...</h1>
   <h3>↓リダイレクト先↓</h3>
   <code id="to"
     style="border: solid #000 1px; border-radius: 3px; padding: 3px 5px; font-size: 1.5em; background-color: #ccc; font-family: 'M PLUS 1 Code', monospace;">https://ここにリンク.com</code>
@@ -25,6 +25,15 @@
       setTimeout(() => {
         location.href = link;
       }, 5e3);
+    }
+    else {
+      document.querySelector("#heading").textContent = "リダイレクト先が設定されていません。\n";
+      document.querySelector("#to").textContent = "";
+    }
+    function Create(l) {
+      let sp = new URLSearchParams();
+      sp.set("r", l);
+      location.search = sp.toString();
     }
   </script>
 </body>
