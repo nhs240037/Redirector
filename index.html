@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>リダイレクト用</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1+Code:wght@100..700&display=swap" rel="stylesheet">
+</head>
+
+<body
+  style="display: flex; flex-direction: column; justify-content: center; width:95vw; height: 95vh; align-items: center;">
+  <h1>リダイレクト中...</h1>
+  <h3>↓リダイレクト先↓</h3>
+  <code id="to"
+    style="border: solid #000 1px; border-radius: 3px; padding: 3px 5px; font-size: 1.5em; background-color: #ccc; font-family: 'M PLUS 1 Code', monospace;">https://ここにリンク.com</code>
+  <script>
+    const q = new URLSearchParams(location.search);
+    if (q.has("r")) {
+      const link = q.get("r");
+      console.log("Trying redirect to... \"" + link + "\"");
+      document.querySelector("#to").textContent = link;
+      setTimeout(() => {
+        location.href = link;
+      }, 5e3);
+    }
+  </script>
+</body>
+
+</html>
